@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "zh-CN"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Skywalker / 学术主页"
+title                    : "Skywalker / 主页"
 title_separator          : "-"
 name                     : &name "Skywalker"
 description              : &description "计算物理博士在读"   # Update this with a general description of your site, this is the default if not overridden by a page
