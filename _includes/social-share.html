@@ -15,10 +15,17 @@
   </a>
 
   <!-- 微信分享（复制链接） -->
-  <button onclick="copyToClipboard('{{ base_path }}{{ page.url }}', '微信')" 
+  <button onclick="copyToClipboard(getPageShareUrl(), '微信')" 
           class="btn btn--wechat" 
           title="复制链接到微信">
     <i class="fab fa-weixin" aria-hidden="true"></i><span> 微信</span>
+  </button>
+
+  <!-- 微信扫码分享 -->
+  <button onclick="openWeChatQrModal()"
+          class="btn btn--wechat-qrcode"
+          title="微信扫码分享">
+    <i class="fas fa-qrcode" aria-hidden="true"></i><span> 微信扫码</span>
   </button>
 
   <!-- 知乎分享 -->
@@ -31,51 +38,96 @@
   </a>
 
   <!-- 复制链接（通用） -->
-  <button onclick="copyToClipboard('{{ base_path }}{{ page.url }}', '链接')" 
+  <button onclick="copyToClipboard(getPageShareUrl(), '链接')" 
           class="btn btn--link" 
           title="复制链接">
     <i class="fas fa-link" aria-hidden="true"></i><span> 复制链接</span>
   </button>
 </section>
 
+<!-- 微信扫码弹窗 -->
+<div id="wechat-qr-modal" class="wechat-qr-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="wechat-qr-modal__backdrop" onclick="closeWeChatQrModal()"></div>
+  <div class="wechat-qr-modal__content">
+    <button type="button" class="wechat-qr-modal__close" onclick="closeWeChatQrModal()" aria-label="关闭">×</button>
+    <h5 class="wechat-qr-modal__title">微信扫码分享</h5>
+    <img id="wechat-qr-image" class="wechat-qr-modal__image" src="" alt="微信扫码分享二维码">
+    <p class="wechat-qr-modal__desc">请使用微信扫一扫，将本页分享给朋友或朋友圈。</p>
+  </div>
+</div>
+
 <script>
-function copyToClipboard(text, platform) {
-  const fullUrl = window.location.origin + text;
-  
-  // 创建临时输入框
-  const input = document.createElement('input');
-  input.value = fullUrl;
-  input.style.position = 'fixed';
-  input.style.opacity = '0';
-  document.body.appendChild(input);
-  input.select();
-  input.setSelectionRange(0, 99999); // 移动端兼容
-  
+function getPageShareUrl() {
+  return window.location.origin + window.location.pathname;
+}
+
+async function copyToClipboard(text, platform) {
+  const fullUrl = text || getPageShareUrl();
+
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(fullUrl);
+      showToast('链接已复制到剪贴板！可以粘贴到' + platform + '了');
+      return;
+    } catch (err) {
+      // 如果现代 API 失败，继续走降级逻辑
+    }
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = fullUrl;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+
   try {
     const successful = document.execCommand('copy');
     if (successful) {
-      // 显示提示
       showToast('链接已复制到剪贴板！可以粘贴到' + platform + '了');
     } else {
-      // 降级方案：显示链接让用户手动复制
       prompt('请手动复制以下链接：', fullUrl);
     }
   } catch (err) {
-    // 降级方案
     prompt('请手动复制以下链接：', fullUrl);
   }
-  
-  document.body.removeChild(input);
+
+  document.body.removeChild(textarea);
 }
 
+function openWeChatQrModal() {
+  const modal = document.getElementById('wechat-qr-modal');
+  const image = document.getElementById('wechat-qr-image');
+  const shareUrl = getPageShareUrl();
+
+  image.src = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' + encodeURIComponent(shareUrl);
+  modal.classList.add('is-visible');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('wechat-qr-open');
+}
+
+function closeWeChatQrModal() {
+  const modal = document.getElementById('wechat-qr-modal');
+  modal.classList.remove('is-visible');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('wechat-qr-open');
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeWeChatQrModal();
+  }
+});
+
 function showToast(message) {
-  // 创建提示框
   const toast = document.createElement('div');
   toast.textContent = message;
   toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:15px 25px;border-radius:5px;z-index:9999;font-size:14px;';
   document.body.appendChild(toast);
-  
-  // 2秒后自动消失
+
   setTimeout(function() {
     document.body.removeChild(toast);
   }, 2000);
