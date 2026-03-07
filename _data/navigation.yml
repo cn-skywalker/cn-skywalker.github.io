@@ -11,6 +11,9 @@ main:
   - title: "论文成果"
     url: /publications/
 
+  - title: "专利成果"
+    url: /patents/
+
   - title: "学术报告"
     url: /talks/    
 
