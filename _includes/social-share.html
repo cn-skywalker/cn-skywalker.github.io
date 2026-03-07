@@ -2,16 +2,82 @@
 
 <section class="page__share">
   {% if site.data.ui-text[site.locale].share_on_label %}
-    <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "Share on" }}</h4>
+    <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "分享到" }}</h4>
   {% endif %}
 
-  <a href="https://bsky.app/intent/compose?text={{ base_path }}{{ page.url }}" class="btn btn--bluesky" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Bluesky"><i class="fab fa-bluesky" aria-hidden="true"></i><span> Bluesky</span></a>
+  <!-- 微博分享 -->
+  <a href="https://service.weibo.com/share/share.php?url={{ base_path | append: page.url | url_encode }}&title={{ page.title | url_encode }}" 
+     class="btn btn--weibo" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     title="分享到微博">
+    <i class="fab fa-weibo" aria-hidden="true"></i><span> 微博</span>
+  </a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_path }}{{ page.url }}" class="btn btn--facebook" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <!-- 微信分享（复制链接） -->
+  <button onclick="copyToClipboard('{{ base_path }}{{ page.url }}', '微信')" 
+          class="btn btn--wechat" 
+          title="复制链接到微信">
+    <i class="fab fa-weixin" aria-hidden="true"></i><span> 微信</span>
+  </button>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_path }}{{ page.url }}" class="btn btn--linkedin" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <!-- 知乎分享 -->
+  <a href="https://www.zhihu.com/question/ask?title={{ page.title | url_encode }}&content={{ base_path | append: page.url | url_encode }}" 
+     class="btn btn--zhihu" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     title="分享到知乎">
+    <i class="fab fa-zhihu" aria-hidden="true"></i><span> 知乎</span>
+  </a>
 
-  <a href="https://www.addtoany.com/add_to/mastodon?linkurl={{  base_path | append: page.url | url_encode }}" class="btn btn--mastodon" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} Mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span> Mastodon</span></a>
-
-  <a href="https://x.com/intent/post?text={{ base_path }}{{ page.url }}" class="btn btn--x" title="{{ site.data.ui-text[site.locale].share_on_label | default: 'Share on' }} X"><i class="fab fa-x-twitter" aria-hidden="true"></i><span> X (formerly Twitter)</span></a>
+  <!-- 复制链接（通用） -->
+  <button onclick="copyToClipboard('{{ base_path }}{{ page.url }}', '链接')" 
+          class="btn btn--link" 
+          title="复制链接">
+    <i class="fas fa-link" aria-hidden="true"></i><span> 复制链接</span>
+  </button>
 </section>
+
+<script>
+function copyToClipboard(text, platform) {
+  const fullUrl = window.location.origin + text;
+  
+  // 创建临时输入框
+  const input = document.createElement('input');
+  input.value = fullUrl;
+  input.style.position = 'fixed';
+  input.style.opacity = '0';
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999); // 移动端兼容
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      // 显示提示
+      showToast('链接已复制到剪贴板！可以粘贴到' + platform + '了');
+    } else {
+      // 降级方案：显示链接让用户手动复制
+      prompt('请手动复制以下链接：', fullUrl);
+    }
+  } catch (err) {
+    // 降级方案
+    prompt('请手动复制以下链接：', fullUrl);
+  }
+  
+  document.body.removeChild(input);
+}
+
+function showToast(message) {
+  // 创建提示框
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.8);color:#fff;padding:15px 25px;border-radius:5px;z-index:9999;font-size:14px;';
+  document.body.appendChild(toast);
+  
+  // 2秒后自动消失
+  setTimeout(function() {
+    document.body.removeChild(toast);
+  }, 2000);
+}
+</script>
