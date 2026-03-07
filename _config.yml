@@ -23,7 +23,7 @@ repository               : "cn-skywalker/cn-skywalker.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "头像.jpg"
   name             : "Skywalker"
   pronouns         : # example: "she/her"  
   bio              : "计算物理博士在读"
