@@ -2,9 +2,9 @@
 title: "板状弥散燃料元件多颗粒晶格建模方法研究"
 collection: talks
 type: "Conference Talk"
-permalink: /talks/2023-01-01-lattice-modeling-dispersion-fuel
+permalink: /talks/2023-07-19-lattice-modeling-dispersion-fuel
 venue: "第十九届反应堆数值计算与粒子输运学术会议暨2023年反应堆物理会议"
-date: 2023-01-01
+date: 2023-07-19
 location: "上海, 中国"
 ---
 

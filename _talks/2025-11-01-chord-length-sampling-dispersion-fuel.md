@@ -2,9 +2,9 @@
 title: "Preliminary analysis of the Chord Length Sampling Method for Dispersion Fuel Plate"
 collection: talks
 type: "Conference Talk"
-permalink: /talks/2025-01-01-chord-length-sampling-dispersion-fuel
+permalink: /talks/2025-11-01-chord-length-sampling-dispersion-fuel
 venue: "Reactor Physics Asia 2025 (RPHA2025) Conference"
-date: 2025-01-01
+date: 2025-11-01
 location: "杭州, 中国"
 ---
 
