@@ -70,7 +70,7 @@ async function copyToClipboard(text, platform) {
       showToast('链接已复制到剪贴板！可以粘贴到' + platform + '了');
       return;
     } catch (err) {
-      // 如果现代 API 失败，继续走降级逻辑
+      /* 如果现代 API 失败，继续走降级逻辑 */
     }
   }
 
