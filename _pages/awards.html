@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-<div class="timeline">
+<div class="timeline timeline--zigzag">
   {% assign awards = site.data.awards | sort: 'year' | reverse %}
   {% assign current_year = "" %}
   {% for item in awards %}
@@ -15,7 +15,7 @@ author_profile: true
       {% assign current_year = item.year %}
       <div class="timeline__year">{{ current_year }}</div>
     {% endif %}
-    <div class="timeline__item">
+    <div class="timeline__item {% if forloop.index0 % 2 == 0 %}timeline__item--left{% else %}timeline__item--right{% endif %}">
       <div class="timeline__dot"></div>
       <div class="timeline__content">
         <div class="timeline__title">{{ item.title }}</div>
