@@ -1,0 +1,61 @@
+/* ==========================================================================
+   TIMELINE
+   ========================================================================== */
+
+.timeline {
+  position: relative;
+  margin-top: 1.5em;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: 2px;
+  background: var(--global-border-color);
+}
+
+.timeline__year {
+  margin: 1.5rem 0 0.5rem;
+  font-size: $type-size-4;
+  font-weight: 700;
+  color: var(--global-text-color);
+}
+
+.timeline__item {
+  position: relative;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.75rem;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: -0.12rem;
+  top: 0.8rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--global-link-color);
+  border: 2px solid var(--global-body-bg-color);
+  box-shadow: 0 0 0 2px var(--global-border-color);
+}
+
+.timeline__content {
+  padding-left: 0.75rem;
+}
+
+.timeline__title {
+  font-size: $type-size-5;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.timeline__note {
+  margin-top: 0.25rem;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+}

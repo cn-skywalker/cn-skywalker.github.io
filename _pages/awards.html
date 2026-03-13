@@ -1,0 +1,26 @@
+---
+layout: archive
+title: "竞赛与获奖"
+permalink: /awards/
+author_profile: true
+---
+
+{% include base_path %}
+
+<div class="timeline">
+  {% assign awards = site.data.awards | sort: 'year' | reverse %}
+  {% assign current_year = "" %}
+  {% for item in awards %}
+    {% if item.year != current_year %}
+      {% assign current_year = item.year %}
+      <div class="timeline__year">{{ current_year }}</div>
+    {% endif %}
+    <div class="timeline__item">
+      <div class="timeline__dot"></div>
+      <div class="timeline__content">
+        <div class="timeline__title">{{ item.title }}</div>
+        {% if item.note %}<div class="timeline__note">{{ item.note }}</div>{% endif %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
