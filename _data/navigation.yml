@@ -8,6 +8,9 @@
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
+  - title: "博客文章"
+    url: /year-archive/
+
   - title: "论文成果"
     url: /publications/
 
@@ -22,11 +25,8 @@ main:
     
   # - title: "项目作品"
   #   url: /portfolio/
-        
-  - title: "博客文章"
-    url: /year-archive/
 
-  - title: "竞赛与获奖"
+  - title: "竞赛"
     url: /awards/
     
   # - title: "CV"
