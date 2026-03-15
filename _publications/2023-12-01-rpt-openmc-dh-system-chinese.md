@@ -8,7 +8,6 @@ date: 2023-12-01
 venue: '强激光与粒子束'
 venue_type: 'Journal'
 paperurl: 'https://www.hplpb.com.cn/cn/article/doi/10.11884/HPLPB202335.230193'
-citation: '刘鹏飞, 陈玉清, 李颂, 朱彤. (2023). &quot;基于OpenMC的反应性等效物理转换方法在双重非均匀性问题中的应用.&quot; <i>强激光与粒子束</i>. 35(12), 133-139.'
 keywords: 'OpenMC, 双重非均匀系统, 弥散颗粒燃料, 反应性等效物理转换方法'
 ---
 

@@ -8,7 +8,6 @@ date: 2025-01-01
 venue: 'Processes'
 venue_type: 'Journal'
 paperurl: 'https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2024.1321444/full'
-citation: 'Zhang, Yinxing; Jiang, Jiahang; Fu, Shengwei; Liu, Jialei; Liu, Xiaoya; Feng, Li; Li, Ang; Liu, Pengfei; Chen, Yuqing; Cai, Qi. (2025). &quot;Numerical Study on Flow Characteristics of Spiral Channel with Coiled Wire.&quot; <i>Processes</i>. 13(3), 667.'
 keywords: 'flow characteristics, frictional resistance coefficient, numerical simulation, Reynolds stress transport model, spiral channel with coiled wire'
 ---
 

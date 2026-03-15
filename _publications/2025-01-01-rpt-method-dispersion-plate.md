@@ -8,7 +8,6 @@ date: 2025-01-01
 venue: 'Annals of Nuclear Energy'
 venue_type: 'Journal'
 paperurl: 'https://www.sciencedirect.com/science/article/abs/pii/S0306454925004530?via%3Dihub'
-citation: 'Pengfei Liu, Yuqing Chen, Jialei Liu, Song Li, Wentao Mou. (2025). &quot;Research on the RPT method applied to dispersion plate-type fuel elements.&quot; <i>Annals of Nuclear Energy</i>. 223, 111636.'
 keywords: 'DH system, Fuel plate, Particle poison, RPT method'
 ---
 

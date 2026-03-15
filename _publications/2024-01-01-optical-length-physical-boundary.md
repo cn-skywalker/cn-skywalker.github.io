@@ -8,7 +8,6 @@ date: 2024-01-01
 venue: 'Frontiers in Energy Research'
 venue_type: 'Journal'
 paperurl: 'https://www.frontiersin.org/journals/energy-research/articles/10.3389/fenrg.2024.1321444/full'
-citation: 'Pengfei Liu, Yuqing Chen, Song Li, Lei Lou. (2024). &quot;An improved optical length research on the physical boundary of particle-dispersed fuel.&quot; <i>Frontiers in Energy Research</i>. 12.'
 keywords: 'double-heterogeneity, fuel plate, reactivity calculation deviation, optical length, judgment methods of physical boundary, volumetric homogenization'
 ---
 

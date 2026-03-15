@@ -8,7 +8,6 @@ date: 2024-01-01
 venue: 'Annals of Nuclear Energy'
 venue_type: 'Journal'
 paperurl: 'https://www.sciencedirect.com/science/article/abs/pii/S0306454924002226?via%3Dihub'
-citation: 'Yuqing Chen, Pengfei Liu, Song Li, Lei Lou, Ang Li. (2024). &quot;Research on fine modeling of dispersion fuel plate based on lattice method.&quot; <i>Annals of Nuclear Energy</i>. 205, 110559.'
 keywords: 'DH system, Fuel plate, Lattice method, Monte Carlo, OpenMC, Stochastic media'
 ---
 
