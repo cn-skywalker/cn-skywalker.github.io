@@ -1,0 +1,54 @@
+- title: "非均匀介质中的局域体积分数涨落"
+  year: 2026
+  date: "2026-03-10"
+  permalink: /posts/2026/09/Local-volume-fraction-fluctuations/
+  excerpt: "研究非均匀介质中局部体积分数的统计涨落，包括相指示函数、n点概率函数和局部体积分数随机变量的定义与物理意义。"
+  tags:
+    - 局部体积分数
+    - 随机介质
+    - 几何性质
+  category: 学习笔记
+
+- title: "OpenMC常用编译命令与技巧"
+  year: 2026
+  date: "2026-03-10"
+  permalink: /posts/2026/09/OpenMC-make/
+  excerpt: "OpenMC源码编译的常用命令和技巧，包括CMake配置、MPI并行编译、DAGMC集成等实用方法。"
+  tags:
+    - OpenMC
+    - 编译安装
+    - 程序开发
+  category: 笔记
+
+- title: "关于硬球模型的Percus-Yevick理论近似"
+  year: 2026
+  date: "2026-03-07"
+  permalink: /posts/2026/07/Percus-Yevick/
+  excerpt: "硬球随机分布体系中的二体关联函数与Percus-Yevick积分方程，用于描述颗粒间距分布和径向分布函数。"
+  tags:
+    - 硬球模型
+    - Percus-Yevick理论
+    - 随机介质
+  category: 学习笔记
+
+- title: "多体系统中的最邻近分布函数"
+  year: 2026
+  date: "2026-03-12"
+  permalink: /posts/2026/12/NND-in-multi-body-system/
+  excerpt: "多体系统中空穴最近邻分布函数和粒子最近邻分布函数的定义与物理意义。"
+  tags:
+    - 最邻近分布函数
+    - 多体系统
+    - 随机介质
+  category: 学习笔记
+
+- title: "AI常用提示词"
+  year: 2026
+  date: "2026-03-06"
+  permalink: /posts/2026/09/how-to-use-AI/
+  excerpt: "文献阅读和科研工作中常用的AI提示词模板，帮助更高效地利用AI助手进行学术研究。"
+  tags:
+    - 提示词
+    - 实用工具
+    - AI助手
+  category: 笔记

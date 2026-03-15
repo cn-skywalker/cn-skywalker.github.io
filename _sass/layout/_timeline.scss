@@ -100,12 +100,47 @@
   font-size: $type-size-5;
   font-weight: 600;
   line-height: 1.6;
+  
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: var(--global-link-color);
+    }
+  }
+}
+
+.timeline__meta {
+  margin-top: 0.25rem;
+  font-size: $type-size-6;
+  color: var(--global-text-color-light);
+  font-weight: 400;
 }
 
 .timeline__note {
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
   font-size: $type-size-6;
   color: var(--global-text-color-light);
+  line-height: 1.5;
+}
+
+.timeline__tags {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.timeline__tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: $type-size-7;
+  color: var(--global-text-color-light);
+  background: var(--global-border-color);
+  border-radius: 4px;
+  line-height: 1.4;
 }
 
 .timeline--zigzag {
