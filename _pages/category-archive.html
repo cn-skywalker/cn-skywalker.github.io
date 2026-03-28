@@ -209,9 +209,14 @@ author_profile: true
 </style>
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   const tabs = document.querySelectorAll('.category-tab');
   const sections = document.querySelectorAll('.category-section');
+
+  if (!tabs.length || !sections.length) {
+    console.warn('Category tabs: Required elements not found');
+    return;
+  }
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -235,5 +240,5 @@ author_profile: true
       }
     });
   });
-})();
+});
 </script>

@@ -350,10 +350,15 @@ redirect_from:
 </style>
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.view-toggle-btn');
   const timelineView = document.getElementById('timeline-view');
   const categoryView = document.getElementById('category-view');
+
+  if (!buttons.length || !timelineView || !categoryView) {
+    console.warn('Blog view toggle: Required elements not found');
+    return;
+  }
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -373,5 +378,5 @@ redirect_from:
       }
     });
   });
-})();
+});
 </script>
