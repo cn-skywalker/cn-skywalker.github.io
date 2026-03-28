@@ -210,27 +210,32 @@ author_profile: true
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Category tabs script starting...');
   const tabs = document.querySelectorAll('.category-tab');
   const sections = document.querySelectorAll('.category-section');
+
+  console.log('Tabs found:', tabs.length);
+  console.log('Sections found:', sections.length);
 
   if (!tabs.length || !sections.length) {
     console.warn('Category tabs: Required elements not found');
     return;
   }
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const category = tab.dataset.category;
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      const category = this.dataset.category;
+      console.log('Tab clicked, category:', category);
 
       // 更新标签页状态
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      this.classList.add('active');
 
       // 显示/隐藏分类内容
       if (category === 'all') {
-        sections.forEach(s => s.classList.remove('hidden'));
+        sections.forEach(function(s) { s.classList.remove('hidden'); });
       } else {
-        sections.forEach(s => {
+        sections.forEach(function(s) {
           if (s.dataset.category === category) {
             s.classList.remove('hidden');
           } else {
@@ -240,5 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  console.log('Category tabs script initialized successfully');
 });
 </script>
