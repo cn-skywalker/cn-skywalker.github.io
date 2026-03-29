@@ -1,7 +1,7 @@
 // 分类标签切换脚本
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Category tabs script starting...');
-  
+
   const tabs = document.querySelectorAll('.category-tab');
   const sections = document.querySelectorAll('.category-section');
 
@@ -13,29 +13,72 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
+  // 切换分类的函数
+  function switchCategory(category) {
+    // 更新标签页状态
+    tabs.forEach(t => {
+      if (t.dataset.category === category) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    // 显示/隐藏分类内容
+    if (category === 'all') {
+      sections.forEach(s => s.classList.remove('hidden'));
+    } else {
+      sections.forEach(s => {
+        if (s.dataset.category === category) {
+          s.classList.remove('hidden');
+        } else {
+          s.classList.add('hidden');
+        }
+      });
+    }
+  }
+
+  // 点击事件：切换分类并更新 URL
   tabs.forEach(tab => {
     tab.addEventListener('click', function() {
       const category = this.dataset.category;
       console.log('Tab clicked, category:', category);
 
-      // 更新标签页状态
-      tabs.forEach(t => t.classList.remove('active'));
-      this.classList.add('active');
-
-      // 显示/隐藏分类内容
+      // 更新 URL hash
       if (category === 'all') {
-        sections.forEach(s => s.classList.remove('hidden'));
+        history.pushState(null, '', window.location.pathname);
       } else {
-        sections.forEach(s => {
-          if (s.dataset.category === category) {
-            s.classList.remove('hidden');
-          } else {
-            s.classList.add('hidden');
-          }
-        });
+        history.pushState(null, '', '#' + encodeURIComponent(category));
       }
+
+      switchCategory(category);
     });
   });
-  
+
+  // 页面加载时：根据 URL hash 激活对应分类
+  function handleHash() {
+    const hash = decodeURIComponent(window.location.hash.slice(1));
+    console.log('Handling hash:', hash);
+
+    if (hash) {
+      // 检查是否有对应的分类标签
+      const targetTab = document.querySelector('.category-tab[data-category="' + hash + '"]');
+      if (targetTab) {
+        switchCategory(hash);
+        // 滚动到分类区域
+        targetTab.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+    }
+    // 默认显示全部
+    switchCategory('all');
+  }
+
+  // 监听 hash 变化（浏览器前进/后退）
+  window.addEventListener('hashchange', handleHash);
+
+  // 初始化
+  handleHash();
+
   console.log('Category tabs script initialized successfully');
 });
