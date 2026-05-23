@@ -24,3 +24,7 @@ package-lock.json
 
 _posts/论文
 _posts/paper
+
+# Ignore MCP configuration
+.mcp.json
+.claude/settings.local.json
