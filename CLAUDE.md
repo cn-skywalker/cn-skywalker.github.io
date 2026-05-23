@@ -8,3 +8,6 @@
 - **PDF 目录**: `_posts/paper/`（输入输出同目录）
 - **环境**: `conda activate sci`
 - **Skill**: 详见 `.claude/skills/ocr-workflow.md`
+## Python运行环境
+- 本地Python脚本统一使用conda sci环境：`D:/miniconda3/envs/sci/python.exe`
+- 示例：`D:/miniconda3/envs/sci/python.exe script.py`
